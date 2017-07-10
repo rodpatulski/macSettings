@@ -10,6 +10,7 @@ PURPLE='\e[0;35m'       # Purple
 CYAN='\e[0;36m'         # Cyan
 WHITE='\e[0;37m'        # White
 
+# environment variables
 export PS1="\[$GREEN\]\u\[$YELLOW\]\[$YELLOW\]\w\[\033[m\]\[$BLUE\]\$(__git_ps1)\$\e[m"
 export CLICOLOR=1
 export LSCOLORS=exfxcxdxbxegedabagacad
@@ -23,17 +24,41 @@ export PYTHONPATH=$BREW_PREFIX/lib/python2.7/site-packages:$PYTHONPATH
 export ANDROID_HOME="/Users/rpatulski/repos/android-sdk-macosx"
 export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
+export NVM_DIR="/Users/rpatulski/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+export PATH="/usr/local/opt/freetds@0.91/bin:$PATH"
+export PATH="/usr/local/opt/freetds@0.91/bin:$PATH"
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+#for locally installed node packages
+#export PATH="$PATH:./node_modules/.bin/"
+
+#this was part of my old bash_profile but I think the 'brew' way below is better
 #if the git completion file exists, then load it in 
-if [ -f ~/.git-completion.bash ]; then
-  . ~/.git-completion.bash
+#if [ -f ~/.git-completion.bash ]; then
+#  . ~/.git-completion.bash
+#fi
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
 fi
+
+#ALIASES
 #fancy information about git repos in the prompt
 source ~/.git-prompt.sh
 alias ll='ls -la'
 alias h='history'
 alias gocode='cd ~/repos/compass-master'
 alias goroot='cd $(git rev-parse --show-cdup)'
+alias go='git checkout' 
+alias get='git'
+alias got='git'
 alias myip='ifconfig | grep "inet " | grep -v 127.0.0.1'
+alias f='open -a Finder ./'                 # f:            Opens current directory in MacOS Finder
+alias qfind="find . -name "                 # qfind:    Quickly search for file
+ff () { /usr/bin/find . -name "$@" ; }      # ff:       Find file under the current directory
+ffs () { /usr/bin/find . -name "$@"'*' ; }  # ffs:      Find file whose name starts with a given string
+ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name ends with a given string
+
 
 devbox=172.17.41.20
 
@@ -50,7 +75,18 @@ function hhg(){
 }
 
 function llg(){
-    ll | grep -i $1
+    if [ "$2" = "" ]; then
+    	#greps the current directory for a string
+        ll | grep -i $1
+    else
+    	# greps a particular directory listing for a string
+        ll $1| grep -i $2
+    fi
+}
+
+# greps local branches
+function bbg(){
+    git branch | grep -i $1
 }
 
 function reload(){
@@ -76,8 +112,3 @@ function nos(){
 
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
-
-export NVM_DIR="/Users/rpatulski/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-export PATH="/usr/local/opt/freetds@0.91/bin:$PATH"
-export PATH="/usr/local/opt/freetds@0.91/bin:$PATH"
