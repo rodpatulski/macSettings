@@ -67,8 +67,6 @@ export WORKON_HOME=$HOME/Envs
 export PROJECT_HOME=$HOME/Devel
 source /usr/local/bin/virtualenvwrapper.sh
 
-#iterm2 shell intergation
-source ~/.iterm2_shell_integration.`basename $SHELL`
 
 function hhg(){
     h | grep -i $1
@@ -110,5 +108,5 @@ function nos(){
 }
 
 
-
+#iterm2 shell intergation
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
