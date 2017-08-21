@@ -1,0 +1,18 @@
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+127.0.0.1	localhost
+255.255.255.255	broadcasthost
+::1             localhost
+
+54.152.81.197 vpn.devops.onpeak.com
+
+127.0.0.1 localrai localdev localqa
+# BEGIN section for OpenVPN Client SSL sites
+127.94.0.1	client.openvpn.net
+127.94.0.2	openvpn-client.vpn.devops.onpeak.com
+# END section for OpenVPN Client SSL sites
+
