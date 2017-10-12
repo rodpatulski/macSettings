@@ -1,0 +1,22 @@
+#!/bin/bash
+# $1 = arctic | dashboard (defines which app we are starting up)
+# $2 = setup (defines if we want to run setup.py)
+
+# create virtualenv
+if [ ! -d "/opt/venv_$1" ]; then
+	sudo virtualenv /opt/venv_$1
+	NEW_VENV=true
+fi
+source /opt/venv_$1/bin/activate
+
+# update virtualenv
+cd /opt/c3p0/arctic_latest/$1
+sudo pip install -U -r bootstrap.list
+if [ "$2" = setup ]; then
+	sudo python setup.py develop
+fi
+
+# restart gunicorn
+#sudo pkill gunicorn
+sudo gunicorn --reload --log-syslog \ --log-syslog-to unix:///dev/log --paste /opt/c3p0/$1.ini
+
