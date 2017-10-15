@@ -5,10 +5,11 @@
 	name = Rod Patulski
 	email = rod.patulski@onpeak.com
 
-[difftool "kdiff3"]
-    path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
-    trustExitCode = false
+#[difftool "kdiff3"]
+#    path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
+#    trustExitCode = false
 [difftool]
+    tool = kdiff3
     prompt = false
 [diff]
     tool = kdiff3
@@ -36,17 +37,11 @@
     hardreset = reset --hard
     outgoing = "!f() { git log --left-right --graph --cherry-pick --oneline $1...$2; }; f"
 
-#[difftool "sourcetree"]
-#	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-#	path = 
-#[mergetool "sourcetree"]
-#	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-#	trustExitCode = true
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [commit]
 	template = /Users/rpatulski/.stCommitMsg
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
