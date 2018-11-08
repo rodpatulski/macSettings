@@ -21,11 +21,12 @@ BREW_PREFIX=`brew --prefix`
 export PATH=~/bin:$BREW_PREFIX/share/python:$BREW_PREFIX/bin/:$BREW_PREFIX/sbin:$PATH
 export PYTHONPATH=$BREW_PREFIX/lib/python2.7/site-packages:$PYTHONPATH
 
-export ANDROID_HOME="/Users/rpatulski/repos/android-sdk-macosx"
+export ANDROID_HOME="/Users/rpatulski/Library/Android/sdk"
 export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
 export NVM_DIR="/Users/rpatulski/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export PATH="/usr/local/opt/freetds@0.91/bin:$PATH"
 export PATH="/usr/local/opt/freetds@0.91/bin:$PATH"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
@@ -43,11 +44,22 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 
 #ALIASES
+
+#quickly move up directories by typing 'cd...'
+alias cd..="cd .."
+alias cd...="cd ../.."
+alias cd....="cd ../../.."
+alias cd.....="cd ../../../.."
+alias cd......="cd ../../../../.."
+
+
 #fancy information about git repos in the prompt
 source ~/.git-prompt.sh
 alias ll='ls -la'
 alias h='history'
 alias gocode='cd ~/repos/compass-master'
+alias goace='cd ~/repos/personal/ionic/quiz_ionic'
+alias gopersonal='cd ~/repos/personal'
 alias goroot='cd $(git rev-parse --show-cdup)'
 alias go='git checkout' 
 alias get='git'
@@ -55,9 +67,10 @@ alias got='git'
 alias myip='ifconfig | grep "inet " | grep -v 127.0.0.1'
 alias f='open -a Finder ./'                 # f:            Opens current directory in MacOS Finder
 alias qfind="find . -name "                 # qfind:    Quickly search for file
-ff () { /usr/bin/find . -name "$@" ; }      # ff:       Find file under the current directory
-ffs () { /usr/bin/find . -name "$@"'*' ; }  # ffs:      Find file whose name starts with a given string
-ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name ends with a given string
+ff () { /usr/bin/find . -name "$@" ; }          # ff:       Find file under the current directory
+ffs () { /usr/bin/find . -name "$@"'*' ; }      # ffs:      Find file whose name starts with a given string
+ffe () { /usr/bin/find . -name '*'"$@" ; }      # ffe:      Find file whose name ends with a given string
+ffm () { /usr/bin/find . -name '*'"$@"'*' ; }   # ffe:      Find file whose name is in the middle of a given string
 
 
 devbox=172.17.41.20
