@@ -9,3 +9,19 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+
+[alias]
+	st = status
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	rh = reset --hard
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	type = cat-file -t
+	dump = cat-file -p
+	branches = branch -a
+	remotes = remote -v
+	stashes = stash list
+	hardreset = reset --hard
+	outgoing = "!f() { git log --left-right --graph --cherry-pick --oneline $1...$2; }; f"
