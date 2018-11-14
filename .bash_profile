@@ -21,7 +21,7 @@
 
 #   Change Prompt
 #   ------------------------------------------------------------
-    export PS1="________________________________________________________________________________\n| \w @ \h (\u) \n| => "
+    export PS1="________________________________________________________________________________\n| \w \n| => "
     export PS2="| => "
 
 #   Set Paths
@@ -31,7 +31,7 @@
 
 #   Set Default Editor (change 'Nano' to the editor of your choice)
 #   ------------------------------------------------------------
-    #export EDITOR=/usr/bin/nano
+    export EDITOR=/usr/bin/nano
 
 #   Set default blocksize for ls, df, du
 #   from this: http://hints.macworld.com/comment.php?mode=view&cid=24491
@@ -77,6 +77,12 @@ trash () { command mv "$@" ~/.Trash ; }     # trash:        Moves a file to the 
 ql () { qlmanage -p "$*" >& /dev/null; }    # ql:           Opens any file in MacOS Quicklook Preview
 alias DT='tee ~/Desktop/terminalOut.txt'    # DT:           Pipe content to file on MacOS Desktop
 
+alias goace='cd ~/repos/personal/ionic/quiz_ionic' #goace: goes to the root directory of test ace project
+ff () { /usr/bin/find . -name "$@" ; }          # ff:       Find file under the current directory
+ffs () { /usr/bin/find . -name "$@"'*' ; }      # ffs:      Find file whose name starts with a given string
+ffe () { /usr/bin/find . -name '*'"$@" ; }      # ffe:      Find file whose name ends with a given string
+ffm () { /usr/bin/find . -name '*'"$@"'*' ; }   # ffe:      Find file whose name is in the middle of a given string
+
 #   lr:  Full Recursive Directory Listing
 #   ------------------------------------------
 alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
@@ -107,4 +113,7 @@ export NVM_DIR="$HOME/.nvm"
 source /Users/rpatulski/oh-my-git/prompt.sh
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+# git completion according to https://github.com/git/git/blob/master/contrib/completion/git-completion.bash
+source ~/.git-completion.bash
 
