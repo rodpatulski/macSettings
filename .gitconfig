@@ -1,29 +1,39 @@
-[user]
-	name = radek79
-	email = radek79@gmail.com
 [core]
 	excludesfile = /Users/rpatulski/.gitignore_global
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+    editor = subl
+[user]
+	name = Rod Patulski
+	email = rod.patulski@onpeak.com
+[difftool]
+    tool = kdiff3
+    prompt = false
+[diff]
+    tool = kdiff3
+[mergetool "kdiff3"]
+    path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
+    trustExitCode = false
+[mergetool]
+
+    keepBackup = false
+[merge]
+    tool = kdiff3
 
 [alias]
-	st = status
-	co = checkout
-	ci = commit
-	st = status
-	br = branch
-	rh = reset --hard
-	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-	type = cat-file -t
-	dump = cat-file -p
-	branches = branch -a
-	remotes = remote -v
-	stashes = stash list
-	hardreset = reset --hard
-	outgoing = "!f() { git log --left-right --graph --cherry-pick --oneline $1...$2; }; f"
+    st = status
+    co = checkout
+    ci = commit
+    st = status
+    br = branch
+    rh = reset --hard
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    type = cat-file -t
+    dump = cat-file -p
+    branches = branch -a
+    remotes = remote -v
+    stashes = stash list
+    hardreset = reset --hard
+    outgoing = "!f() { git log --left-right --graph --cherry-pick --oneline $1...$2; }; f"
+    # checkout to a tropic bug branch
+    tbug = "!f() { git checkout bugs/TROP-$1; }; f"
 [commit]
 	template = /Users/rpatulski/.stCommitMsg
