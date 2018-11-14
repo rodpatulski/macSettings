@@ -25,3 +25,5 @@
 	stashes = stash list
 	hardreset = reset --hard
 	outgoing = "!f() { git log --left-right --graph --cherry-pick --oneline $1...$2; }; f"
+[commit]
+	template = /Users/rpatulski/.stCommitMsg
