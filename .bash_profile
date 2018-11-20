@@ -117,3 +117,11 @@ test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shel
 # git completion according to https://github.com/git/git/blob/master/contrib/completion/git-completion.bash
 source ~/.git-completion.bash
 
+#jenv
+#this is appending the jenv tool to the path. More info: http://www.jenv.be/
+export PATH="$HOME/.jenv/bin:$PATH"
+if which jenv > /dev/null; then eval "$(jenv init -)"; fi
+export JAVA_HOME="$HOME/.jenv/versions/`jenv version-name`"
+alias jenv_set_java_home='export JAVA_HOME="$HOME/.jenv/versions/`jenv version-name`"'
+#requires calling jenv_set_java_home once inside of a cordova project in order for cordova to get the correct JAVA_HOME (1.8) vs 11 which is the system setting
+#more info here: https://github.com/gcuisinier/jenv/issues/44
