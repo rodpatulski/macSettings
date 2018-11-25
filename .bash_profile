@@ -21,8 +21,18 @@
 
 #   Change Prompt
 #   ------------------------------------------------------------
-    export PS1="________________________________________________________________________________\n| \w \n| => "
-    export PS2="| => "
+	# Regular Colors
+	BLACK='\e[0;30m'        # Black
+	RED='\e[0;31m'          # Red
+	GREEN='\e[0;32m'        # Green
+	YELLOW='\e[0;33m'       # Yellow
+	BLUE='\e[0;34m'         # Blue
+	PURPLE='\e[0;35m'       # Purple
+	CYAN='\e[0;36m'         # Cyan
+	WHITE='\e[0;37m'        # White
+
+    export PS1="\[$GREEN\]\w\e[m => "
+    #export PS2="| => "
 
 #   Set Paths
 #   ------------------------------------------------------------
