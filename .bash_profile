@@ -87,7 +87,7 @@ trash () { command mv "$@" ~/.Trash ; }     # trash:        Moves a file to the 
 ql () { qlmanage -p "$*" >& /dev/null; }    # ql:           Opens any file in MacOS Quicklook Preview
 alias DT='tee ~/Desktop/terminalOut.txt'    # DT:           Pipe content to file on MacOS Desktop
 
-alias goace='cd ~/repos/personal/ionic/quiz_ionic' #goace: goes to the root directory of test ace project
+alias goace='cd ~/repos/personal/ionic/test_ace' #goace: goes to the root directory of test ace project
 ff () { /usr/bin/find . -name "$@" ; }          # ff:       Find file under the current directory
 ffs () { /usr/bin/find . -name "$@"'*' ; }      # ffs:      Find file whose name starts with a given string
 ffe () { /usr/bin/find . -name '*'"$@" ; }      # ffe:      Find file whose name ends with a given string
