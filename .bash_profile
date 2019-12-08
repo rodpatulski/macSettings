@@ -31,8 +31,12 @@
 	CYAN='\e[0;36m'         # Cyan
 	WHITE='\e[0;37m'        # White
 
-    export PS1="\[$GREEN\]\w\e[m => "
+    #export PS1="\[$GREEN\]\w\e[m => "
+    export PS1="\[$GREEN\]\w\[\033[0m\] => "
+	#export PS1="\[\033[0;31m\]\W\[\033[0m\]$ => " #works
     #export PS2="| => "
+	#if the prompt is giving you problems with up arrow command history, check out http://blog.taylormcgann.com/tag/prompt-color/ and https://unix.stackexchange.com/questions/90772/first-characters-of-the-command-repeated-in-the-display-when-completing
+	# the problem is with the \e[m sequence to end the color scheme
 
 #   Set Paths
 #   ------------------------------------------------------------
@@ -88,10 +92,11 @@ ql () { qlmanage -p "$*" >& /dev/null; }    # ql:           Opens any file in Ma
 alias DT='tee ~/Desktop/terminalOut.txt'    # DT:           Pipe content to file on MacOS Desktop
 
 alias goace='cd ~/repos/personal/ionic/test_ace' #goace: goes to the root directory of test ace project
-ff () { /usr/bin/find . -name "$@" ; }          # ff:       Find file under the current directory
-ffs () { /usr/bin/find . -name "$@"'*' ; }      # ffs:      Find file whose name starts with a given string
-ffe () { /usr/bin/find . -name '*'"$@" ; }      # ffe:      Find file whose name ends with a given string
-ffm () { /usr/bin/find . -name '*'"$@"'*' ; }   # ffe:      Find file whose name is in the middle of a given string
+alias goml=' cd /Users/rpatulski/Dropbox/machine learning course/machine-learning-ex2/ex2' #goace: goes to the root directory of test ace project
+ff () { /usr/bin/find . -iname "$@" ; }          # ff:       Find file under the current directory
+ffs () { /usr/bin/find . -iname "$@"'*' ; }      # ffs:      Find file whose name starts with a given string
+ffe () { /usr/bin/find . -iname '*'"$@" ; }      # ffe:      Find file whose name ends with a given string
+ffm () { /usr/bin/find . -iname '*'"$@"'*' ; }   # ffe:      Find file whose name is in the middle of a given string
 
 #   lr:  Full Recursive Directory Listing
 #   ------------------------------------------
