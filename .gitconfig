@@ -1,9 +1,9 @@
 [core]
 	excludesfile = /Users/rpatulski/.gitignore_global
-    editor = subl
+    editor = code
 [user]
-	name = Rod Patulski
-	email = rod.patulski@onpeak.com
+	name = radek79
+	email = radek79@gmail.com
 [difftool]
     tool = kdiff3
     prompt = false
@@ -37,3 +37,9 @@
     tbug = "!f() { git checkout bugs/TROP-$1; }; f"
 [commit]
 	template = /Users/rpatulski/.stCommitMsg
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
