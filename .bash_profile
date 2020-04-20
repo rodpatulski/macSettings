@@ -38,6 +38,11 @@
 	#if the prompt is giving you problems with up arrow command history, check out http://blog.taylormcgann.com/tag/prompt-color/ and https://unix.stackexchange.com/questions/90772/first-characters-of-the-command-repeated-in-the-display-when-completing
 	# the problem is with the \e[m sequence to end the color scheme
 
+#   Grep color highlighting
+#   ------------------------------------------------------------
+	export GREP_OPTIONS='--color=auto'
+	export GREP_COLOR='1;30;40'
+
 #   Set Paths
 #   ------------------------------------------------------------
     #export PATH="$PATH:/usr/local/bin/"
